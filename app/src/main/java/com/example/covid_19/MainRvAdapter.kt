@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
 class MainRvAdapter(val context: Context, val list: ArrayList<Model>) : RecyclerView.Adapter<MainRvAdapter.Holder>() {
 
@@ -41,6 +42,7 @@ class MainRvAdapter(val context: Context, val list: ArrayList<Model>) : Recycler
 
         fun bind(model: Model, context: Context) {
             title.text = model.title
+            Picasso.get().load(model.image).into(photo)
         }
     }
 }
