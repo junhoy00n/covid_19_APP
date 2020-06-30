@@ -20,7 +20,18 @@ class MainRvAdapter(val context: Context, val list: ArrayList<Model>) : Recycler
         return list.size
     }
 
+    interface ItemClick {
+        fun onClick(view: View, position: Int)
+    }
+    var itemClick : ItemClick? = null
+
     override fun onBindViewHolder(p0: MainRvAdapter.Holder, p1: Int) {
+        if(itemClick != null) {
+            p0?.itemView.setOnClickListener { v ->
+                itemClick?.onClick(v, p1)
+            }
+        }
+
         p0.bind(list[p1], context)
     }
 
